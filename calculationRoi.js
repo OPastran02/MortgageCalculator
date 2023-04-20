@@ -74,7 +74,7 @@ function createSliders(){
         }else{
             rangeValue.innerHTML = range.value
         }
-        slidersValues[i]=parseInt(range.value); 
+        slidersValues[i]=parseFloat(range.value); 
         calculateBackEndValues(); 
         calculateAll();   
         range.addEventListener('input', () => { 
@@ -87,7 +87,7 @@ function createSliders(){
             }
             inputs.value = range.value;
             let pos = slidersID.indexOf(range.id);
-            slidersValues[pos]=parseInt(range.value);
+            slidersValues[pos]=parseFloat(range.value);
             calculateBackEndValues(); 
             calculateAll(); 
         });
@@ -104,7 +104,7 @@ function createSliders(){
             }
             range.value = inputs.value;
             let pos = inputsID.indexOf(inputs.id);
-            slidersValues[pos]=parseInt(inputs.value);
+            slidersValues[pos]=parseFloat(inputs.value);
             calculateBackEndValues(); 
             calculateAll(); 
             calculateBackEndValues(); 

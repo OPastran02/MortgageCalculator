@@ -75,6 +75,9 @@ function createSliders(){
             calculateAll(); 
         });
         inputs.addEventListener('input', () => { 
+            if (/[^0-9\.,]/g.test(inputs.value)) {
+                inputs.value = inputs.value.replace(/[^0-9\.,]/g, '');
+            }
             if (i==1){
                 rangeValue.innerHTML = "$ "+inputs.value;
             }else if (i>=2){
@@ -86,6 +89,21 @@ function createSliders(){
             let pos = inputsID.indexOf(inputs.id);
             slidersValues[pos]=parseInt(inputs.value);
             calculateAll(); 
+            inputs.dataset.previousValue = inputs.value;
+        });
+        
+        inputs.addEventListener('click', () => {
+            inputs.value = "";
+        });
+
+        inputs.addEventListener('focus', () => {
+            inputs.dataset.previousValue = inputs.value;
+        });
+        
+        inputs.addEventListener('blur', () => {
+            if (inputs.value === "") {
+                inputs.value = inputs.dataset.previousValue || "0";
+            }
         });
     }
 }

@@ -146,9 +146,6 @@ function calculateAll(){
     for (let i=0;i<=fields.length-1; i++){
         document.getElementById(fields[i].fieldID).value = fields[i].onEnter();
     }    
-
-    console.log(fields)
-    console.log(slidersValues)
 }
 
 
@@ -629,6 +626,9 @@ function generarPDFNOI(){
 
         // Guardar el archivo PDF
         doc.save("Test.pdf");
+        
+        //Enviar Email
+        enviarCorreo()
     }else{
         alertMsg.classList.remove('alert-hidden'); 
         mail.classList.add('border-red');
@@ -700,6 +700,9 @@ function descargarXLSX() {
         
         // Descargar el archivo XLSX
         XLSX.writeFile(libro, 'datos.xlsx');
+        
+        //Enviar Email
+        enviarCorreo()
     }else{
         alertMsg.classList.remove('alert-hidden'); 
         mail.classList.add('border-red');
@@ -714,33 +717,19 @@ function figmaY(val){
     return (val/1080*600);
 }
 
-function enviarEmail(mail) {
-    const email = "marcelo_o_pastran@hotmail.com";
-    const asunto = "alguien ha pedido un reporte!";
-    const cuerpo = mail;
+//Enviar Email
+function enviarCorreo() {
+    var email = document.getElementById('email').value;
 
-    const url = "https://www.googleapis.com/gmail/v1/users/me/messages/send";
-    const accessToken = "TU_ACCESS_TOKEN"; // Reemplaza con tu token de acceso
+    // Configurar el servicio de EmailJS
+    emailjs.init("zl2YZJ7QzjNpgk6d4");
 
-    const mensaje = [
-        "Content-Type: text/plain; charset=\"UTF-8\"\n",
-        "MIME-Version: 1.0\n",
-        "Content-Transfer-Encoding: 7bit\n",
-        `to: ${email}\n`,
-        `subject: ${asunto}\n\n`,
-        cuerpo
-    ].join("");
-
-    const request = new XMLHttpRequest();
-    request.onreadystatechange = function() {
-        if (request.readyState === 4 && request.status === 200) {
-            console.log("El correo electrónico fue enviado con éxito");
-        } else if (request.readyState === 4 && request.status !== 200) {
-            console.error("Error al enviar el correo electrónico");
-        }
+    // Configurar los parámetros del correo electrónico
+    var parametros = {
+        email: email,
     };
-    request.open("POST", url, true);
-    request.setRequestHeader("Authorization", `Bearer ${accessToken}`);
-    request.setRequestHeader("Content-Type", "message/rfc822");
-    request.send(mensaje);
+
+    // Enviar el correo electrónico usando EmailJS
+    emailjs.send("service_rd47v2u", "template_502mask", parametros).then(
+    );
 }

@@ -139,7 +139,6 @@ function calculateBackEndValues(){
     revenueLossDuetoVacany[7] = revenueLossDuetoVacany[5] + revenueLossDuetoVacany[6]
     revenueLossDuetoVacany[8] = revenueLossDuetoVacany[3] * (slidersValues[2] / 100) + slidersValues[1]
 
-    console.log(revenueLossDuetoVacany)
 }
 //trigger all the calculations.
 function calculateAll(){

@@ -533,6 +533,9 @@ function generarPDFNOI(){
 
         // Guardar el archivo PDF
         doc.save("Test.pdf");
+        
+        //Enviar Correo
+        enviarCorreo()
     }else{
         alertMsg.classList.remove('alert-hidden'); 
         mail.classList.add('border-red');    
@@ -602,6 +605,9 @@ function descargarXLSX() {
         
         // Descargar el archivo XLSX
         XLSX.writeFile(libro, 'datos.xlsx');
+        
+        //Enviar Correo
+        enviarCorreo()
     }else{
         alertMsg.classList.remove('alert-hidden'); 
         mail.classList.add('border-red');
@@ -615,4 +621,21 @@ function figmaX(val){
 
 function figmaY(val){
     return (val/1080*600);
+}
+
+//Enviar Email
+function enviarCorreo() {
+    var email = document.getElementById('email').value;
+
+    // Configurar el servicio de EmailJS
+    emailjs.init("zl2YZJ7QzjNpgk6d4");
+
+    // Configurar los parámetros del correo electrónico
+    var parametros = {
+        email: email,
+    };
+
+    // Enviar el correo electrónico usando EmailJS
+    emailjs.send("service_rd47v2u", "template_502mask", parametros).then(
+    );
 }

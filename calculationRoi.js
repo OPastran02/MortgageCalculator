@@ -142,7 +142,6 @@ function calculateBackEndValues(){
 }
 // Trigger all the calculations.
 function calculateAllRoi(){
-    console.log('roi')
     for (let i=0;i<=roifields.length-1; i++){
         document.getElementById(roifields[i].fieldID).value = roifields[i].onEnter();
     }    

@@ -31,6 +31,7 @@ h1, b{
     color: #232222;
 }
 
+
 h2 {
     font-weight: lighter;
     font-size: 1.3rem;
@@ -81,7 +82,6 @@ input::placeholder{
 
 /* General CSS End */
 
-
 /* Container Calculator Start */
 
 .container-calculador{
@@ -129,7 +129,7 @@ input::placeholder{
     display: none;
 }
 
-.view-icon{
+.view-icon-roi{
     width: 22px;
     cursor: pointer;
 }
@@ -157,20 +157,20 @@ input::placeholder{
     font-size: 1.1rem;
 }
 
-#download-report{
+#download-report-roi{
     background-color: transparent!important;
     border: 2px solid #2F4DED;
     color: #2F4DED!important;
     font-weight: bold;
 }
 
-#download-report:hover{
+#download-report-roi:hover{
     background-color: #2F4DED!important;
     border: 2px solid #2F4DED;
     color: #FFFFFF!important;
 }
 
-#download-report:hover img {
+#download-report-roi:hover img {
     content: url('./img/download-icon-white.svg');
 }
 
@@ -184,11 +184,15 @@ input::placeholder{
     background-color: #2641db!important;
 }
 
-.alert-input{
+.alert-input-roi{
     color: red;
 }
 
-.alert-hidden{
+.alert-hidden-roi{
+    display: none;
+}
+
+.hidden-roi{
     display: none;
 }
 
@@ -200,6 +204,10 @@ input::placeholder{
 
 
 /* Portfolio Values (Ranges) Start */
+
+.nav-tabs .nav-link.active {
+    background-color:  #0328fa!important; /* Color de fondo deseado para la pestaña activa */
+}
 
 .title-portfolio{
     color: #4E5E6B;
@@ -320,7 +328,8 @@ input[type="range"]:active::-webkit-slider-thumb{
     border: 3px solid #4a4584;
 }
 
-#rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+#roi-rangeValue1,#roi-rangeValue2,#roi-rangeValue3,#roi-rangeValue4,#roi-rangeValue5,#roi-rangeValue6,
+#roi-rangeValue7,#roi-rangeValue8,#roi-rangeValue9,#roi-rangeValue10,#roi-rangeValue11{
     width: 13%;
     position: relative;
     background-color: #2F4DED;
@@ -405,14 +414,14 @@ input[type="range"]:active::-webkit-slider-thumb{
 
 /* Buttons More Details Start */
 
-#details-button-WA, #details-button-WOA{
+#roi-details-button-WA, #roi-details-button-WOA{
     background-color: transparent;
     border: 2px solid #2F4DED!important;
     color: #2F4DED!important;
     font-weight: bold;
 }
 
-#details-button-WA:hover, #details-button-WOA:hover{
+#roi-details-button-WA:hover, #roi-details-button-WOA:hover{
     background-color: #2F4DED!important;
     color: #FFFFFF!important;
 }
@@ -436,7 +445,8 @@ input[type="range"]:active::-webkit-slider-thumb{
 }
 
 @media (max-width: 1700px) {
-    #rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+    #roi-rangeValue1,#roi-rangeValue2,#roi-rangeValue3,#roi-rangeValue4,#roi-rangeValue5,#roi-rangeValue6,#roi-rangeValue7,
+    #roi-rangeValue8,#roi-rangeValue9,#roi-rangeValue10,#roi-rangeValue11{
         width: 25%;
         position: relative;
         background-color: #2F4DED;

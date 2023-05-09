@@ -27,6 +27,7 @@ a:hover{
     background-color: #2641db!important;
 }
 
+
 h1, b{
     color: #232222;
 }
@@ -81,6 +82,61 @@ input::placeholder{
 
 /* General CSS End */
 
+/* Container Change Btns Calculator Start */
+.text-violet{
+    color: #a73ff7;
+}
+
+.container-change-calculator{
+    border-bottom: 5px solid #f2f3f5;
+}
+
+.container-change-calculator .button {
+    border-radius: 5px;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 7px 40px 7px 20px;
+    width: auto;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+    
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    background-color: #a73ff7;
+    box-shadow: 0px 2px 4px rgb(45 35 66 / 40%), 0px 7px 13px -3px rgb(45 35 66 / 30%), inset 0px -3px 0px rgb(58 65 111 / 50%);
+    height: 48px;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+    transition: box-shadow 0.15s ease,transform 0.15s ease;
+}
+
+.container-change-calculator .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.container-change-calculator .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 1;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.container-change-calculator .button:hover {
+    background-color: #8e01fa;
+}
+
+/* Container Change Btns Calculator End*/
 
 /* Container Calculator Start */
 
@@ -200,6 +256,9 @@ input::placeholder{
 
 
 /* Portfolio Values (Ranges) Start */
+.nav-tabs .nav-link.active {
+    background-color:  #0328fa!important; /* Color de fondo deseado para la pestaña activa */
+}
 
 .title-portfolio{
     color: #4E5E6B;
@@ -320,7 +379,8 @@ input[type="range"]:active::-webkit-slider-thumb{
     border: 3px solid #4a4584;
 }
 
-#rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+#noi-rangeValue1,#noi-rangeValue2,#noi-rangeValue3,#noi-rangeValue4,#noi-rangeValue5,#noi-rangeValue6,
+#noi-rangeValue7,#noi-rangeValue8,#noi-rangeValue9,#noi-rangeValue10,#noi-rangeValue11{
     width: 13%;
     position: relative;
     background-color: #2F4DED;
@@ -329,7 +389,6 @@ input[type="range"]:active::-webkit-slider-thumb{
     padding: 10px 0;
     border-radius: 5px;
 }
-
 
 .container-range span{    
     width: 13%;
@@ -405,14 +464,14 @@ input[type="range"]:active::-webkit-slider-thumb{
 
 /* Buttons More Details Start */
 
-#details-button-WA, #details-button-WOA{
+#noi-details-button-WA, #noi-details-button-WOA{
     background-color: transparent;
     border: 2px solid #2F4DED!important;
     color: #2F4DED!important;
     font-weight: bold;
 }
 
-#details-button-WA:hover, #details-button-WOA:hover{
+#noi-details-button-WA:hover, #noi-details-button-WOA:hover{
     background-color: #2F4DED!important;
     color: #FFFFFF!important;
 }
@@ -451,7 +510,8 @@ input[type="range"]:active::-webkit-slider-thumb{
 }
 
 @media (max-width: 1700px) {
-    #rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+    #noi-rangeValue1,#noi-rangeValue2,#noi-rangeValue3,#noi-rangeValue4,#noi-rangeValue5,#noi-rangeValue6,
+    #noi-rangeValue7,#noi-rangeValue8,#noi-rangeValue9,#noi-rangeValue10,#noi-rangeValue11{
         width: 20%;
         position: relative;
         background-color: #2F4DED;
@@ -463,7 +523,8 @@ input[type="range"]:active::-webkit-slider-thumb{
 }
 
 @media (max-width: 1060px) {
-    #rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+    #noi-rangeValue1,#noi-rangeValue2,#noi-rangeValue3,#noi-rangeValue4,#noi-rangeValue5,#noi-rangeValue6,
+    #noi-rangeValue7,#noi-rangeValue8,#noi-rangeValue9,#noi-rangeValue10,#noi-rangeValue11{
         width: 25%;
         position: relative;
         background-color: #2F4DED;
@@ -487,7 +548,8 @@ input[type="range"]:active::-webkit-slider-thumb{
 }
 
 @media (max-width: 500px) {
-    #rangeValue1,#rangeValue2,#rangeValue3,#rangeValue4,#rangeValue5,#rangeValue6,#rangeValue7,#rangeValue8,#rangeValue9,#rangeValue10,#rangeValue11{
+    #noi-rangeValue1,#noi-rangeValue2,#noi-rangeValue3,#noi-rangeValue4,#noi-rangeValue5,#noi-rangeValue6,
+    #noi-rangeValue7,#noi-rangeValue8,#noi-rangeValue9,#noi-rangeValue10,#noi-rangeValue11{
         width: 35%;
     }
 }
@@ -502,6 +564,10 @@ input[type="range"]:active::-webkit-slider-thumb{
 @media (max-width:443px) {
     h4 {
         font-size: 1.2rem;
+    }
+    .container-change-calculator .button {
+        font-size: 16px;
+        width: auto;
     }
 }
 

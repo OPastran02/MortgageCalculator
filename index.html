@@ -8,486 +8,1013 @@
     <!-- Boostrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="calculatorNoi.css">
+    <!-- Style CSS NOI -->
+    <link rel="stylesheet" href="./calculatorNoi.css">
+
+    <!-- Style CSS ROI -->
+    <link rel="stylesheet" href="./calculatorRoi.css">
     <title>Owner Managed Multifamily NOI</title>
 </head>
 <body>
     <main>
         <div class="container-fluid p-4 py-5 calulator">
-            <div class="container-fluid mx-auto container-calculador row text-start py-5 px-lg-5 px-md-4">
+            <div class="container-fluid mx-auto container-calculador row text-start py-5 px-lg-5 px-md-4 pt-4">
+                
                 <!-- Button Change Calculator Start -->
-                <div class="d-flex justify-content-center mb-3 w-100">
-                    <a href="./calculatorRoi.html" class="text-center btn btn-lg rounded-3 w-100">Change to Third-Party ROI Calculator</a>
+                <div class="col-12 container-change-calculator container-fluid pb-3">
+                    <div class="col-12 container justify-content-center justify-content-lg-end text-center p-0 float-end float-lg-start w-100">
+                        <div class="container-fluid d-block d-lg-flex justify-content-center justify-content-lg-end p-0 align-items-center">
+                            <p class="fw-bold fs-5 p-0 m-0 px-0 px-lg-3 text-violet">Please select the type of company:</p>
+                            <button class="button mx-0 mx-lg-2" id="third-party"><span>Third-Party PMs </span></button>
+                            <button class="button mx-0 mx-lg-2" id="owner-operators"><span>Owner Operators PMs </span></button>
+                        </div>
+                    </div>
                 </div>
                 <!-- Button Change Calculator End -->
-                
-                <!-- Title Start -->
-                <h1 class="text-start mt-4">Property Management NOI Calculator</h1>
-                <h2 class="mb-4">New Technology Savings Calculator for Owner-Managed Multifamily Rental Properties</h2>
-                <!-- Title End -->
 
-                <!-- Result Sumary Start -->
-                <div class="col-12 container-result-sumary p-0 mt-4 pt-3">
-                    <div class="container">
-                        <div class="w-100 d-md-flex justify-content-md-around  d-sm-block justify-content-sm-center p-0 m-0">
-                            <div class="w-100">
-                                <input type="text" class="w-100 text-center ganancy" id="net-operating-income-increase" name="net-operating-income-increase" placeholder="$-" disabled value="536906">  
-                                <label for="net-operating-income-increase" class="text-center w-100 ganancy">Net Operating Income Increase</label>
-                            </div>
-                            <div class="w-100">
-                                <input type="text" class="w-100 text-center" placeholder="$-" id="revenue-recovered-from-vacancy-loss" name="revenue-recovered-from-vacancy-loss" disabled value="134419">
-                                <label for="revenue-recovered-from-vacancy-loss" class="text-center w-100">Recovered from Vacancy loss</label>
-                            </div>
-                            <div class="w-100">
-                                <input type="text" class="w-100 text-center" id="noi-increase" name="noi-increase" placeholder="%-" disabled value="2">  
-                                <label for="noi-increase" class="text-center w-100">NOI % increase</label>
-                            </div>
-                            <div class="w-100">
-                                <input type="text" class="w-100 text-center" id="time-to-pay-off-new-technology" name="time-to-pay-off-new-technology" disabled value="33">   
-                                <label for="time-to-pay-off-new-technology" class="text-center w-100">Time to pay off new technology</label>
-                            </div>
-                            <div class="w-100">
-                                <input type="text" class="w-100 text-center" id="new-technology-roi-multiple" name="new-technology-roi-multiple" disabled value="15">  
-                                <label for="new-technology-roi-multiple" class="text-center w-100">Return on money spent on technology</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Result Sumary End -->
-
-                <!-- Download Report Start -->  
-                <div class="container-fluid container-download text-center pt-2">
-                    <button type="button" id="download-report" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
-                        Download detailed report 
-                        <img src="./img/download-icon-violet.svg" class="img-fluid" alt="csv-icon">
-                    </button>
-                    <form class="hidden" id="download-form">
-                        <h4 class="my-0 fw-bold pt-2 pb-3">
-                            Download report
-                            <img src="./img/eye-slash.svg" class="view-icon mx-2">
-                        </h4>
-                        <div class="row">
-                            <div class="col-12">
-                                <p class="alert-input p-0 m-0 alert-hidden">Please enter a valid email *</p>
-                                <input type="email" id="email" placeholder="Enter your email to download the report" class="w-50 p-2">
-                            </div>
-                            <div class="col-12 mt-4">
-                                <button type="button" onclick="descargarXLSX()" id="download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
-                                    Download CSV
-                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
-                                </button>
-                                <button type="button" onclick="generarPDFNOI();" id="download-pdf-button" class="btn btn-lg btn-primary mb-4 mx-auto rounded-3">
-                                    Download PDF
-                                    <img src="./img/excel-icon.svg" class="img-fluid" alt="pdf-icon">
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!-- Download Report End -->
-
-                <!-- Portfolio Values (Ranges) Start -->
-                
-                <div class="col-lg-5 col-md-12 col-sm-12 pe-lg-5 pe-md-0 mt-4">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#tab1">Slides</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab2">Inputs</a>
-                        </li>
-                    </ul>
-
-                    <!-- Tab Slides Content Start -->
-                    <div class="tab-content">
-                        <div id="tab1" class="tab-pane fade show active">
-                            <div class="row">
-                                <div class="row mt-4 pe-4 portfolio-container">
-                                    <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
-                                    <div class="col-12 mb-4">
-                                        <label for="range-text">Number of units managed:</label>
-                                        <div class="container-range">
-                                            <input type="range" id="customRange1" min="0" max="5000" value="2001">
-                                            <div id="rangeValue1" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange2" min="0" max="5000" value="1244">
-                                            <div id="rangeValue2" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Vacancy rate</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange3" min="0" max="99" value="3">
-                                            <div id="rangeValue3" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
-                                    <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Repairs & Maintenance</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange4" min="0" max="100" value="5">
-                                            <div id="rangeValue4" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Advertising & Marketing</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange5" min="0" max="100" value="2">
-                                            <div id="rangeValue5" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Management Fees</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange6" min="0" max="100" value="4">
-                                            <div id="rangeValue6" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">General & Administrative</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange7" min="0" max="100" value="3">
-                                            <div id="rangeValue7" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Utilities</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange8" min="0" max="100" value="2">
-                                            <div id="rangeValue8" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange9" min="0" max="100" value="10">
-                                            <div id="rangeValue9" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Insurance and Taxes</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange10" min="0" max="100" value="14">
-                                            <div id="rangeValue10" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="p-0 m-0 mx-1">Other</label>
-                                        <div class="container-range">
-                                            <input class="p-0 m-0" type="range" id="customRange11" min="0" max="100" value="1">
-                                            <div id="rangeValue11" class="p-0 m-0">0</div>
-                                        </div>
-                                    </div>
-                                    <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Tab Slides Content End -->
-                        
-                        <!-- Tab Inputs Content Start -->
-                        <div id="tab2" class="tab-pane fade">
-                            <div class="row">
-                                <div class="row mt-4 pe-4 portfolio-container">
-                                    <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
-                                    <div class="col-12 mb-4">
-                                        <label for="range-text">Number of units managed:</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange1i" value="2001" maxlength="6">
-                                            <span>U</span>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange2i" value="1244" maxlength="6">
-                                            <span>$</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Vacancy rate</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange3i" value="3" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
-                                    <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Repairs & Maintenance</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange4i" value="5" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Advertising & Marketing</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange5i" value="2" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Management Fees</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange6i" value="4" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">General & Administrative</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange7i" value="3" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Utilities</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange8i" value="2" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange9i" value="10" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <label class="p-0 m-0 mx-1">Insurance and Taxes</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange10i" value="14" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <label class="p-0 m-0 mx-1">Other</label>
-                                        <div class="container-range">
-                                            <input class="w-100" type="text" id="customRange11i" value="1" maxlength="4">
-                                            <span>%</span>
-                                        </div>
-                                    </div>
-                                    <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Tab Inputs Content End -->
-
-                    <!-- Total Opex Start -->
-                    <div class="col-12 mb-2 total-opex pt-3 mt-4">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="total-opex" class="form-label label-title m-0 p-0">Total Opex
-                                </label>
-                            </div>
-                            <div class="col-6">
-                                    <input type="text" class="mb-3 mt-0 p-1 text-end w-100" value="40 %" id="total-opex" name="total-opex" disabled>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Total Opex End -->
-                    
-                </div>
-                <!-- Portfolio Values (Ranges) Start -->
-
-                <!-- Card With Automation Start -->
-                <div class="col-lg-7 col-md-12 col-sm-12 rounded-5 pt-5 h-50">
+                <!-- Calculator NOI Start -->
+                <div class="col-12" id="container-noi">
                     <div class="row">
-                        <div class="col-12 container-card rounded-4 mb-5 p-0">
-                            <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
-                                <h4 class="my-0 fw-bold">With Automation</h4>
-                            </div>
-                            <div class="container mt-3 px-4">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
-                                                <p class="fw-light title_category m-0">Gross Profit</p>
-                                                <input type="text" class="w-100 text-center" id="gross-profit-input-year-2" name="gross-profit-input-year-2" disabled value="$ 29.109.219">
-                                            </div>
+                        <!-- Title Start -->
+                        <div class="col-12">
+                            <h1 class="text-start mt-5">Property Management NOI Calculator</h1>
+                            <h2 class="mb-4">New Technology Savings Calculator for Owner-Managed Multifamily Rental Properties</h2>
+                        </div>
+                        <!-- Title End -->
 
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
-                                                <p class="fw-light title_category m-0">Operating Expenses</p>
-                                                <input type="text" class="w-100" name="operating-expenses-2" id="operating-expenses-2" disabled  value="$10.864.827">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
-                                                <p class="fw-light title_category m-0">Net Operating Income</p>
-                                                <input type="text" class="w-100" id="net-operating-income-2" name="net-operating-income-2" disabled value="$ 18.244.393">
-                                            </div>
-
-                                            <div class="col-12 mb-4 text-center vissible-list-WA">
-                                                <p class="fw-light title_category m-0">. . .</p>                                            
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">Total Rental Income</p>
-                                                <input type="text" class="w-100 m-0 text-center" id="total_rental_income_2" name="total_rental_income_2" disabled value="$ 29.870.928">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">Rent loss due to vacancy</p>
-                                                <input type="text" class="w-100 text-center" id="vacancy-loss-input-year-2" name="vacancy-loss-input-year-2" disabled value="$ 761.709">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">Utilities & Maintenance</p>
-                                                <input type="text" class="w-100" id="utilities-maintenance-input-year-2" name="utilities-maintenance-input-year-2" disabled value="$ 1.505.495">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">Advertising & Marketing</p>
-                                                <input type="text" id="advertising-marketing-2" name="advertising-marketing-2" class="w-100" disabled  value="$ 451.648">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values"  value="$ ">
-                                                <p class="fw-light title_category m-0">Management Fees</p>
-                                                <input type="text" id="management-fees-2" name="management-fees-2" class="w-100" disabled  value="$ 1.194.837">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">General & Administrative</p>
-                                                <input type="text" id="general-administrative-2" name="general-administrative-2" class="w-100" disabled value="$ 806.515">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">Salaries & Personnel</p>
-                                                <input type="text" class="w-100" name="salaries-personnel-2" id="salaries-personnel-2" disabled value="$ 4.181.930">
-                                            </div>
-                                            
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Insurance & taxes</p>
-                                                <input type="text" class="w-100" name="insurance-and-taxes-2" id="insurance-and-taxes-2" disabled  value="$ 2.987.093">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">New software cost</p>
-                                                <input type="text" class="w-100" name="new-software-cost-2" id="new-software-cost-2" disabled  value="$ 36.018">
-                                            </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
-                                                <p class="fw-light title_category m-0">NOI Percentage</p>
-                                                <input type="text" class="w-100" id="noi-percentage-2" name="noi-percentage-2" disabled  value="63 %">
-                                            </div>
-
-                                            <div class="col-12 px-2">
-                                                <button type="button" id="details-button-WA" class="btn btn-lg mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
-                                            </div>
-                                        </div>
+                        <!-- Result Sumary Start -->
+                        <div class="col-12 container-result-sumary p-0 mt-4 pt-3">
+                            <div class="container">
+                                <div class="w-100 d-md-flex justify-content-md-around  d-sm-block justify-content-sm-center p-0 m-0">
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center ganancy" id="noi-net-operating-income-increase" name="noi-net-operating-income-increase" placeholder="$-" disabled value="536906">  
+                                        <label for="net-operating-income-increase" class="text-center w-100 ganancy">Net Operating Income Increase</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" placeholder="$-" id="noi-revenue-recovered-from-vacancy-loss" name="noi-revenue-recovered-from-vacancy-loss" disabled value="134419">
+                                        <label for="revenue-recovered-from-vacancy-loss" class="text-center w-100">Recovered from Vacancy loss</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" id="noi-increase" name="noi-increase" placeholder="%-" disabled value="2">  
+                                        <label for="noi-increase" class="text-center w-100">NOI % increase</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" id="noi-time-to-pay-off-new-technology" name="noi-time-to-pay-off-new-technology" disabled value="33">   
+                                        <label for="time-to-pay-off-new-technology" class="text-center w-100">Time to pay off new technology</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" id="noi-new-technology-roi-multiple" name="noi-new-technology-roi-multiple" disabled value="15">  
+                                        <label for="new-technology-roi-multiple" class="text-center w-100">Return on money spent on technology</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Card With Automation End -->
+                        <!-- Result Sumary End -->
 
-                        <!-- Card Without Automation Start -->
-                        <div class="col-12 container-card rounded-4 mb-5 p-0 mt-2">
-                            <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
-                                <h4 class="my-0 fw-bold">Without Automation</h4>
-                            </div>
-                            <div class="container mt-3 px-4">
+                        <!-- Download Report Start -->  
+                        <div class="container-fluid container-download text-center pt-2">
+                            <button type="button" id="download-report" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
+                                Download detailed report 
+                                <img src="./img/download-icon-violet.svg" class="img-fluid" alt="csv-icon">
+                            </button>
+                            <form class="hidden" id="download-form">
+                                <h4 class="my-0 fw-bold pt-2 pb-3">
+                                    Download report
+                                    <img src="./img/eye-slash.svg" class="view-icon mx-2">
+                                </h4>
                                 <div class="row">
                                     <div class="col-12">
-                                        <div class="row">
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center container-values">
-                                                <p class="fw-light title_category m-0">Gross Profit</p>
-                                                <input type="text" class="w-100 text-center" id="gross-profit-input-year-1" name="gross-profit-input-year-1" disabled  value="$ 28.974.800">
+                                        <p class="alert-input p-0 m-0 alert-hidden">Please enter a valid email *</p>
+                                        <input type="email" id="noi-email" placeholder="Enter your email to download the report" class="w-50 p-2">
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="button" onclick="descargarXLSX()" id="noi-download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
+                                            Download CSV
+                                            <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
+                                        </button>
+                                        <button type="button" onclick="generarPDFNOI();" id="noi-download-pdf-button" class="btn btn-lg btn-primary mb-4 mx-auto rounded-3">
+                                            Download PDF
+                                            <img src="./img/excel-icon.svg" class="img-fluid" alt="pdf-icon">
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Download Report End -->
+
+                        <!-- Portfolio Values (Ranges) Start -->
+                        
+                        <div class="col-lg-5 col-md-12 col-sm-12 pe-lg-5 pe-md-0 mt-4">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#tab1">Slides <img src="./img/sliders.svg"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab2">Inputs <img src="./img/input-cursor.svg"></a>
+                                </li>
+                                <div class="pt-3 d-flex align-items-center">
+                                    <p class="p-0 fw-bold">
+                                        <img src="./img/info-circle.svg">
+                                        Select <span class="text-primary">'Slides'</span> if you want to enter a range of values or Select 
+                                        <span class="text-primary">'Inputs'</span> if you want to enter values via keyboard.
+                                    </p>
+                                </div>
+                            </ul>
+
+                            <!-- Tab Slides Content Start -->
+                            <div class="tab-content">
+                                <div id="tab1" class="tab-pane fade show active">
+                                    <div class="row">
+                                        <div class="row mt-4 pe-4 portfolio-container">
+                                            <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
+                                            <div class="col-12 mb-4">
+                                                <label for="range-text">Number of units managed:</label>
+                                                <div class="container-range">
+                                                    <input type="range" id="noi-customRange1" min="0" max="10000" value="2001">
+                                                    <div id="noi-rangeValue1" class="p-0 m-0">0</div>
+                                                </div>
                                             </div>
-                                            
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
-                                                <p class="fw-light title_category m-0">Operating Expenses</p>
-                                                <input type="text" class="w-100" name="operating-expenses-1" id="operating-expenses-1" disabled  value="$ 11.267.314">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange2" min="0" max="5000" value="1244">
+                                                    <div id="noi-rangeValue2" class="p-0 m-0">0</div>
+                                                </div>
                                             </div>
-                                            
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
-                                                <p class="fw-light title_category m-0">Net Operating Income</p>
-                                                <input type="text" class="w-100" id="net-operating-income-1" name="net-operating-income-1" disabled  value="$ 17.707.486">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Vacancy rate</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange3" min="0" max="99" value="3">
+                                                    <div id="noi-rangeValue3" class="p-0 m-0">0</div>
+                                                </div>
                                             </div>
 
-                                            <div class="col-12 mb-4 text-center vissible-list-WOA">
-                                                <p class="fw-light title_category m-0">. . .</p>
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
+                                            <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Repairs & Maintenance</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange4" min="0" max="100" value="5">
+                                                    <div id="noi-rangeValue4" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Advertising & Marketing</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange5" min="0" max="100" value="2">
+                                                    <div id="noi-rangeValue5" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Management Fees</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange6" min="0" max="100" value="4">
+                                                    <div id="noi-rangeValue6" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">General & Administrative</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange7" min="0" max="100" value="3">
+                                                    <div id="noi-rangeValue7" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Utilities</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange8" min="0" max="100" value="2">
+                                                    <div id="noi-rangeValue8" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange9" min="0" max="100" value="10">
+                                                    <div id="noi-rangeValue9" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Insurance and Taxes</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange10" min="0" max="100" value="14">
+                                                    <div id="noi-rangeValue10" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="p-0 m-0 mx-1">Other</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="noi-customRange11" min="0" max="100" value="1">
+                                                    <div id="noi-rangeValue11" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tab Slides Content End -->
+                                
+                                <!-- Tab Inputs Content Start -->
+                                <div id="tab2" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="row mt-4 pe-4 portfolio-container">
+                                            <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
+                                            <div class="col-12 mb-4">
+                                                <label for="range-text">Number of units managed:</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange1i" value="2001" maxlength="5">
+                                                    <span>U</span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange2i" value="1244" maxlength="6">
+                                                    <span>$</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Vacancy rate</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange3i" value="3" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
 
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Total Rental Income</p>
-                                                <input type="text" class="w-100 m-0 text-center" id="total_rental_income_1" name="total_rental_income_1" disabled  value="$ 29.870.928">
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
+                                            <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Repairs & Maintenance</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange4i" value="5" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Rent loss due to vacancy</p>
-                                                <input type="text" class="w-100 text-center" id="vacancy-loss-input-year-1" name="vacancy-loss-input-year-1" disabled  value="$ 896.128">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Advertising & Marketing</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange5i" value="2" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Utilities & Maintenance</p>
-                                                <input type="text" class="w-100" id="utilities-maintenance-input-year-1" name="utilities-maintenance-input-year-1" disabled  value="$ 1.505.495">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Management Fees</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange6i" value="4" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Advertising & Marketing</p>
-                                                <input type="text" id="advertising-marketing-1" name="advertising-marketing-1" class="w-100" disabled  value="$ 501.832">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">General & Administrative</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange7i" value="3" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Management Fees</p>
-                                                <input type="text" id="management-fees-1" name="management-fees-1" class="w-100" disabled  value="$ 1.194.837">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Utilities</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange8i" value="2" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">General & Administrative</p>
-                                                <input type="text" id="general-administrative-1" name="general-administrative-1" class="w-100" disabled  value="$ 1.194.837">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange9i" value="10" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Salaries & Personnel</p>
-                                                <input type="text" class="w-100" name="salaries-personnel-1" id="salaries-personnel-1" disabled  value="$ 2.987.093">
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Insurance and Taxes</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange10i" value="14" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">Insurance & taxes</p>
-                                                <input type="text" class="w-100" name="insurance-and-taxes-1" id="insurance-and-taxes-1" disabled  value="$ 2.987.093">
+                                            <div class="col-12">
+                                                <label class="p-0 m-0 mx-1">Other</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="noi-customRange11i" value="1" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
                                             </div>
-
-
-                                            <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
-                                                <p class="fw-light title_category m-0">NOI Percentage</p>
-                                                <input type="text" class="w-100" id="noi-percentage-1" name="noi-percentage-1" disabled  value="61 %">
-                                            </div>
-
-                                            <div class="col-12 px-2">
-                                                <button type="button" id="details-button-WOA" class="btn btn-lg mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
-                                            </div>
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Tab Inputs Content End -->
+
+                            <!-- Total Opex Start -->
+                            <div class="col-12 mb-2 total-opex pt-3 mt-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="total-opex" class="form-label label-title m-0 p-0">Total Opex
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                            <input type="text" class="mb-3 mt-0 p-1 text-end w-100" value="40 %" id="noi-total-opex" name="total-opex" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Total Opex End -->
+                            
                         </div>
-                        <!-- Card Without Automation End -->
+                        <!-- Portfolio Values (Ranges) Start -->
+
+                        <!-- Card With Automation Start -->
+                        <div class="col-lg-7 col-md-12 col-sm-12 rounded-5 pt-5 h-50">
+                            <div class="row">
+                                <div class="col-12 container-card rounded-4 mb-5 p-0">
+                                    <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
+                                        <h4 class="my-0 fw-bold">With Automation</h4>
+                                    </div>
+                                    <div class="container mt-3 px-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Gross Profit</p>
+                                                        <input type="text" class="w-100 text-center" id="noi-gross-profit-input-year-2" name="gross-profit-input-year-2" disabled value="$ 29.109.219">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Operating Expenses</p>
+                                                        <input type="text" class="w-100" name="operating-expenses-2" id="noi-operating-expenses-2" disabled  value="$10.864.827">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Net Operating Income</p>
+                                                        <input type="text" class="w-100" id="noi-net-operating-income-2" name="net-operating-income-2" disabled value="$ 18.244.393">
+                                                    </div>
+
+                                                    <div class="col-12 mb-4 text-center vissible-list-WA">
+                                                        <p class="fw-light title_category m-0">. . .</p>                                            
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Total Rental Income</p>
+                                                        <input type="text" class="w-100 m-0 text-center" id="noi-total_rental_income_2" name="total_rental_income_2" disabled value="$ 29.870.928">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Rent loss due to vacancy</p>
+                                                        <input type="text" class="w-100 text-center" id="noi-vacancy-loss-input-year-2" name="vacancy-loss-input-year-2" disabled value="$ 761.709">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Utilities & Maintenance</p>
+                                                        <input type="text" class="w-100" id="noi-utilities-maintenance-input-year-2" name="utilities-maintenance-input-year-2" disabled value="$ 1.505.495">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Advertising & Marketing</p>
+                                                        <input type="text" id="noi-advertising-marketing-2" name="advertising-marketing-2" class="w-100" disabled  value="$ 451.648">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values"  value="$ ">
+                                                        <p class="fw-light title_category m-0">Management Fees</p>
+                                                        <input type="text" id="noi-management-fees-2" name="management-fees-2" class="w-100" disabled  value="$ 1.194.837">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">General & Administrative</p>
+                                                        <input type="text" id="noi-general-administrative-2" name="general-administrative-2" class="w-100" disabled value="$ 806.515">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Salaries & Personnel</p>
+                                                        <input type="text" class="w-100" name="salaries-personnel-2" id="noi-salaries-personnel-2" disabled value="$ 4.181.930">
+                                                    </div>
+                                                    
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Insurance & taxes</p>
+                                                        <input type="text" class="w-100" name="insurance-and-taxes-2" id="noi-insurance-and-taxes-2" disabled  value="$ 2.987.093">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">New software cost</p>
+                                                        <input type="text" class="w-100" name="new-software-cost-2" id="noi-new-software-cost-2" disabled  value="$ 36.018">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">NOI Percentage</p>
+                                                        <input type="text" class="w-100" id="noi-percentage-2" name="noi-percentage-2" disabled  value="63 %">
+                                                    </div>
+
+                                                    <div class="col-12 px-2">
+                                                        <button type="button" id="noi-details-button-WA" class="btn btn-lg mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card With Automation End -->
+
+                                <!-- Card Without Automation Start -->
+                                <div class="col-12 container-card rounded-4 mb-5 p-0 mt-2">
+                                    <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
+                                        <h4 class="my-0 fw-bold">Without Automation</h4>
+                                    </div>
+                                    <div class="container mt-3 px-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Gross Profit</p>
+                                                        <input type="text" class="w-100 text-center" id="noi-gross-profit-input-year-1" name="gross-profit-input-year-1" disabled  value="$ 28.974.800">
+                                                    </div>
+                                                    
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Operating Expenses</p>
+                                                        <input type="text" class="w-100" name="operating-expenses-1" id="noi-operating-expenses-1" disabled  value="$ 11.267.314">
+                                                    </div>
+                                                    
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Net Operating Income</p>
+                                                        <input type="text" class="w-100" id="noi-net-operating-income-1" name="net-operating-income-1" disabled  value="$ 17.707.486">
+                                                    </div>
+
+                                                    <div class="col-12 mb-4 text-center vissible-list-WOA">
+                                                        <p class="fw-light title_category m-0">. . .</p>
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Total Rental Income</p>
+                                                        <input type="text" class="w-100 m-0 text-center" id="noi-total_rental_income_1" name="total_rental_income_1" disabled  value="$ 29.870.928">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Rent loss due to vacancy</p>
+                                                        <input type="text" class="w-100 text-center" id="noi-vacancy-loss-input-year-1" name="vacancy-loss-input-year-1" disabled  value="$ 896.128">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Utilities & Maintenance</p>
+                                                        <input type="text" class="w-100" id="noi-utilities-maintenance-input-year-1" name="utilities-maintenance-input-year-1" disabled  value="$ 1.505.495">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Advertising & Marketing</p>
+                                                        <input type="text" id="noi-advertising-marketing-1" name="advertising-marketing-1" class="w-100" disabled  value="$ 501.832">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Management Fees</p>
+                                                        <input type="text" id="noi-management-fees-1" name="management-fees-1" class="w-100" disabled  value="$ 1.194.837">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">General & Administrative</p>
+                                                        <input type="text" id="noi-general-administrative-1" name="general-administrative-1" class="w-100" disabled  value="$ 1.194.837">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Salaries & Personnel</p>
+                                                        <input type="text" class="w-100" name="salaries-personnel-1" id="noi-salaries-personnel-1" disabled  value="$ 2.987.093">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Insurance & taxes</p>
+                                                        <input type="text" class="w-100" name="insurance-and-taxes-1" id="noi-insurance-and-taxes-1" disabled  value="$ 2.987.093">
+                                                    </div>
+
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">NOI Percentage</p>
+                                                        <input type="text" class="w-100" id="noi-percentage-1" name="noi-percentage-1" disabled  value="61 %">
+                                                    </div>
+
+                                                    <div class="col-12 px-2">
+                                                        <button type="button" id="noi-details-button-WOA" class="btn btn-lg mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Without Automation End -->
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <!-- Calculator NOI End -->
+
+
+                <!-- Calculator ROI Start -->
+                <div class="col-12" id="container-roi">
+                    <div class="row">
+                        <!-- Title Start -->
+                        <div class="col-12">
+                            <h1 class="text-start mt-5">Property Management ROI Calculator</h1>
+                            <h2 class="mb-4">New Technology ROI Calculator for Property Management</h2>
+                        </div>
+                        <!-- Title End -->
+
+                        <!-- Result Sumary Start -->
+                        <div class="col-12 container-result-sumary p-0 mt-4 pt-3">
+                            <div class="container">
+                                <div class="w-100 d-md-flex justify-content-md-around  d-sm-block justify-content-sm-center p-0 m-0">
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center ganancy" id="roi-net-operating-income-increase" name="net-operating-income-increase" disabled value="92.284">  
+                                        <label for="net-operating-income-increase" class="text-center w-100 ganancy">Net Operating Income Increase</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center"  id="roi-revenue-recovered-from-vacancy-loss" name="revenue-recovered-from-vacancy-loss" disabled value="58.552">
+                                        <label for="revenue-recovered-from-vacancy-loss" class="text-center w-100">Recovered from Vacancy loss</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" id="roi-increase" name="noi-increase" disabled value="22">  
+                                        <label for="noi-increase" class="text-center w-100">NOI % increase</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" id="roi-time-to-pay-off-new-technology" name="time-to-pay-off-new-technology" disabled value="65">   
+                                        <label for="time-to-pay-off-new-technology" class="text-center w-100">Time to pay off new technology</label>
+                                    </div>
+                                    <div class="w-100">
+                                        <input type="text" class="w-100 text-center" id="roi-new-technology-roi-multiple" name="new-technology-roi-multiple" disabled value="15">  
+                                        <label for="new-technology-roi-multiple" class="text-center w-100">Return on money spent</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Result Sumary End -->
+
+                        <!-- Download Report Start -->
+                        <div class="container-fluid container-download text-center pt-2">
+                            <button type="button" id="download-report-roi" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
+                                Download detailed report 
+                                <img src="./img/download-icon-violet.svg" class="img-fluid" alt="csv-icon-roi">
+                            </button>
+                            <form class="hidden-roi" id="download-form-roi">
+                                <h4 class="my-0 fw-bold pt-2 pb-3">
+                                    Download report
+                                    <img src="./img/eye-slash.svg" class="view-icon-roi mx-2">
+                                </h4>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="alert-input-roi p-0 m-0 alert-hidden-roi">Please enter a valid email *</p>
+                                        <input type="email" id="roi-email" placeholder="Enter your email to download the report" class="w-50 p-2">
+                                    </div>
+                                    <div class="col-12 mt-4">
+                                        <button type="button" onclick="descargarXLSXRoi()" id="roi-download-csv-button" class="btn btn-lg btn-primary mb-4 mx-lg-5 mx-sm-0 rounded-3">
+                                            Download CSV
+                                            <img src="./img/excel-icon.svg" class="img-fluid" alt="csv-icon">
+                                        </button>
+                                        <button type="button" onclick="generarPDFROI();" id="roi-download-pdf-button" class="btn btn-lg btn-primary mb-4 mx-auto rounded-3">
+                                            Download PDF
+                                            <img src="./img/excel-icon.svg" class="img-fluid" alt="pdf-icon">
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Download Report End -->
+
+                        <!-- Portfolio Values (Ranges) Start -->
+                        <div class="col-lg-4 col-md-12 col-sm-12 mt-4">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-bs-toggle="tab" href="#tab-1">Slides <img src="./img/sliders.svg"></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Inputs <img src="./img/input-cursor.svg"></a>
+                                </li>
+                                <div class="pt-3 d-flex align-items-center">
+                                    <p class="p-0 fw-bold">
+                                        <img src="./img/info-circle.svg">
+                                        Select <span class="text-primary">'Slides'</span> if you want to enter a range of values or Select 
+                                        <span class="text-primary">'Inputs'</span> if you want to enter values via keyboard.
+                                    </p>
+                                </div>
+                            </ul>
+
+                            <!-- Tab Slides Content Start -->
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane fade show active">
+                                    <div class="row">
+                                        <div class="row mt-4 portfolio-container">
+                                            <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
+                                            <div class="col-12 mb-4">
+                                                <label for="range-text">Number of units managed:</label>
+                                                <div class="container-range">
+                                                    <input type="range" id="roi-customRange1" max="10000" value="500">
+                                                    <div id="roi-rangeValue1" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange2" max="5000" value="1250">
+                                                    <div id="roi-rangeValue2" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Management fee</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange3" max="100" value="10">
+                                                    <div id="roi-rangeValue3" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Vacancy rate</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange4" max="99" value="3">
+                                                    <div id="roi-rangeValue4" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
+                                            <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange5" max="100" value="45">
+                                                    <div id="roi-rangeValue5" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">New Owner Advertising</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange6" max="100" value="4">
+                                                    <div id="roi-rangeValue6" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Facilities (auto, tech, rent etc.)</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange7" max="100" value="13">
+                                                    <div id="roi-rangeValue7" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Other operating expenses</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange8" max="100" value="7">
+                                                    <div id="roi-rangeValue8" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Payroll taxes</label>
+                                                <div class="container-range">
+                                                    <input class="p-0 m-0" type="range" id="roi-customRange9" max="100" value="6">
+                                                    <div id="roi-rangeValue9" class="p-0 m-0">0</div>
+                                                </div>
+                                            </div>
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tab Slides Content End -->
+                                
+                                <!-- Tab Inputs Content Start -->
+                                <div id="tab-2" class="tab-pane fade">
+                                    <div class="row">
+                                        <div class="row mt-4 pe-4 portfolio-container">
+                                            <h2 class="mb-3 mt-4 mx-1 fw-bold title-portfolio">Portfolio values</h2>
+                                            <div class="col-12 mb-4">
+                                                <label for="range-text">Number of units managed:</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="roi-customRange1i" value="500" maxlength="5">
+                                                    <span>U</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Average monthly rent per unit</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="roi-customRange2i" value="1250" maxlength="6">
+                                                    <span>$</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Management fee</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="roi-customRange3i" maxlength="4" value="10">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Vacancy rate</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="roi-customRange4i" value="3" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) Start -->
+                                            <h2 class="mt-5 mb-3 fw-bold title-portfolio">Operating Expenses % of Gross Rent Per unit</h2>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Salaries & Personnel</label>
+                                                <div class="container-range">
+                                                    <input class="w-100" type="text" id="roi-customRange5i" value="45" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>   
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">New Owner Advertising</label>
+                                                <div class="container-range">   
+                                                    <input class="w-100" type="text" id="roi-customRange6i" value="4" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Facilities (auto, tech, rent etc.)</label>
+                                                <div class="container-range">     
+                                                    <input class="w-100" type="text" id="roi-customRange7i" value="13" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Other operating expenses</label>
+                                                <div class="container-range">   
+                                                    <input class="w-100" type="text" id="roi-customRange8i" value="7" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <label class="p-0 m-0 mx-1">Payroll taxes</label>
+                                                <div class="container-range">        
+                                                <input class="w-100" type="text" id="roi-customRange9i" value="6" maxlength="4">
+                                                    <span>%</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- Operating Expenses % of Gross Rent Per unit (Range) End -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Tab Inputs Content End -->
+
+                            <!-- Total Opex Start -->
+                            <div class="col-12 mb-2 total-opex pt-3 mt-4">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="total-opex" class="form-label label-title m-0 p-0">Total Opex
+                                        </label>
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="text" class="mb-3 mt-0 p-1 text-end w-100" value="75" id="roi-total-opex" name="total-opex" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Total Opex End -->
+                        </div>
+                        <!-- Portfolio Values (Ranges) Start -->
+
+                        <!-- Card With Automation Start -->
+                        <div class="col-lg-8 col-md-12 col-sm-12 rounded-5 pt-5 h-50">
+                            <div class="row">
+                                <div class="col-12 container-card rounded-4 mb-5 p-0">
+                                    <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
+                                        <h4 class="my-0 fw-bold">With Automation</h4>
+                                    </div>
+                                    <div class="container mt-3 px-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Gross Profit</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-gross-profit-year-2" name="gross-profit-year-2" disabled  value="$ 392.875">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Operating Expenses</p>
+                                                        <input type="text" class="w-100" name="operating-expenses-2" id="roi-operating-expenses-2" disabled  value="$ 276.674">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Net Operating Income</p>
+                                                        <input type="text" class="w-100" id="roi-net-operating-income-2" name="net-operating-income-2" disabled  value="$ 116.201">
+                                                    </div>
+
+                                                    <div class="col-12 mb-4 text-center vissible-list-WA">
+                                                        <p class="fw-light title_category m-0">. . .</p>                                            
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Management fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-management-fees-2" name="management-fees-2" disabled  value="$ 413.875">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Application fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-application-fees-2" name="application-fees-2" disabled  value="$ 12.542">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Leasing fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-leasing-fees-2" name="leasing-fees-2" disabled  value="$ 81.521">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Owner fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-owner-fees-2" name="owner-fees-2" disabled  value="$ 25.083">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Tenant fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-tenant-fees-2" name="tenant-fees-2" disabled  value="$ 68.979">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Other</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-other-2" name="other-2" disabled  value="$ 25.083">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue loss due to vacancy</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-revenue-loss-due-to-vacancy-2" name="revenue-loss-due-to-vacancy-2" disabled  value="$ 234.208">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Salaries & Personnel</p>
+                                                        <input type="text" class="w-100"  name="salaries-personnel-2" id="roi-salaries-personnel-2" disabled  value="$ 158.307">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">New Owner Advertising</p>
+                                                        <input type="text" class="w-100"  id="roi-new-owner-advertising-2" name="new-owner-advertising-2" disabled  value="$ 16.555">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Facilities (auto, tech, etc.)</p>
+                                                        <input type="text" id="roi-facilities-2" name="facilities-2" class="w-100"  disabled  value="$ 45.733">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Other operating expenses</p>
+                                                        <input type="text" id="roi-other-operating-expenses-2" name="other-operating-expenses-2" class="w-100" disabled  value="$ 28.971">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Payroll taxes</p>
+                                                        <input type="text" id="roi-payroll-taxes-2" name="payroll-taxes-2" class="w-100" disabled  value="$ 21.108">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">New software cost</p>
+                                                        <input type="text" class="w-100"  name="new-software-cost-2" id="roi-new-software-cost-2" disabled  value="$ 6.000">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Net Operating Income %</p>
+                                                        <input type="text" class="w-100" id="roi-net-operating-income-porcentage-2" name="net-operating-income-porcentage-2" disabled  value="30 %">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WA container-values">
+                                                        <p class="fw-light title_category m-0">Days to pay off</p>
+                                                        <input type="text" class="w-100" id="roi-days-to-pay-off-new-technology-2" name="days-to-pay-off-new-technology-2" disabled  value="65">
+                                                    </div>
+
+                                                    <div class="col-12 px-2">
+                                                        <button type="button" id="roi-details-button-WA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card With Automation End -->
+
+                                <!-- Card Without Automation Start -->
+                                <div class="col-12 container-card rounded-4 mb-5 p-0 mt-2">
+                                    <div class="card-header pt-4 pb-3 px-5 text-center rounded-top-4">
+                                        <h4 class="my-0 fw-bold">Without Automation</h4>
+                                    </div>
+                                    <div class="container mt-3 px-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="row">
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Gross Profit</p>
+                                                        <input type="text" class="w-100 text-center" id="roi-gross-profit-year-1" name="gross-profit-year-1" disabled value="$ 334.323">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Operating Expenses</p>
+                                                        <input type="text" class="w-100"  name="operating-expenses-1" id="roi-operating-expenses-1" disabled value="$ 310.406">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center container-values">
+                                                        <p class="fw-light title_category m-0">Net Operating Income</p>
+                                                        <input type="text" class="w-100"  id="roi-net-operating-income-1" name="net-operating-income-1" disabled value="$ 23.917"> 
+                                                    </div>
+
+                                                    <div class="col-12 mb-4 text-center vissible-list-WOA">
+                                                        <p class="fw-light title_category m-0">. . .</p>                                            
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Management fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-management-fees-1" name="management-fees-1" disabled  value="$ 413.875">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Application fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-application-fees-1" name="application-fees-1" disabled  value="$ 12.542">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Leasing fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-leasing-fees-1" name="leasing-fees-1" disabled  value="$ 81.521">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Owner fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-owner-fees-1" name="owner-fees-1" disabled  value="$ 25.083">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Tenant fees</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-tenant-fees-1" name="tenant-fees-1" disabled  value="$ 68.979">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue: Other</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-other-1" name="other-1" disabled  value="$ 25.093">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Revenue loss due to vacancy</p>
+                                                        <input type="text" class="w-100 text-center"  id="roi-revenue-loss-due-to-vacancy-1" name="revenue-loss-due-to-vacancy-1" disabled value="$ 292.760">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Salaries & Personnel</p>
+                                                        <input type="text" class="w-100"  name="salaries-personnel-1" id="roi-salaries-personnel-1" disabled value="$ 186.244">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12  mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">New Owner Advertising</p>
+                                                        <input type="text" class="w-100"  id="roi-new-owner-advertising-1" name="new-owner-advertising-1" disabled value="$ 16.555">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Facilities (auto, tech, etc.)</p>
+                                                        <input type="text" id="roi-facilities-1" name="facilities-1" class="w-100" disabled  value="$ 53.804">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Other operating expenses</p>
+                                                        <input type="text" id="roi-other-operating-expenses-1" name="other-operating-expenses-1" class="w-100" disabled value="$ 28.971">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Payroll taxes</p>
+                                                        <input type="text" id="roi-payroll-taxes-1" name="payroll-taxes-1" class="w-100" disabled value="$ 24.833">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">New software cost</p>
+                                                        <input type="text" class="w-100"  name="new-software-cost-1" id="roi-new-software-cost-1" disabled value="-">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Net Operating Income %</p>
+                                                        <input type="text" class="w-100"  id="roi-net-operating-income-porcentage-1" name="net-operating-income-porcentage-1" disabled  value="7 %">
+                                                    </div>
+
+                                                    <div class="col-6 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-5 text-center hidden-list-WOA container-values">
+                                                        <p class="fw-light title_category m-0">Days to pay off</p>
+                                                        <input type="text" class="w-100" id="roi-days-to-pay-off-new-technology-1" name="days-to-pay-off-new-technology-1" disabled value="-">
+                                                    </div>
+
+                                                    <div class="col-12 px-2">
+                                                        <button type="button" id="roi-details-button-WOA" class="btn btn-lg btn-primary mb-4 mx-auto w-100 rounded-3" onclick="toggleElements()">More details</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card Without Automation End -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calculator ROI End -->
             </div>
         </div>
     </main>
     
-    <!-- Calculator JS -->
+    <!-- Calculator NOI JS -->
     <script src="./calculationNoi.js"></script>
+
+    <!-- Calculator ROI JS -->
+    <script src="./calculationRoi.js"></script>
 
     <!-- Btn More Details JS -->
     <script src="./btnMoreDetailsNoi.js"></script>
 
-    <!-- Show Form Download JS -->
+    <!-- Show Form Download NOI JS -->
     <script src="./showFormDownload.js"></script>
+
+    <!-- Show Form Download ROI JS -->
+    <script src="./showFormDownloadRoi.js"></script>
+
+    <!-- Change Calculator JS -->
+    <script src="./change-calculator.js"></script>
 
     <!-- JsPDF JS -->
     <script type="text/javascript" src="jspdf.min.js"></script>

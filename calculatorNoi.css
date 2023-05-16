@@ -571,4 +571,10 @@ input[type="range"]:active::-webkit-slider-thumb{
     }
 }
 
+@media (max-width:330px) {
+    .container-change-calculator .button {
+        padding: 7px;
+    }
+}
+
 /* MediaQuerys End */

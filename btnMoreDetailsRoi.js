@@ -1,53 +1,53 @@
 // Get the button element with ID 'details-button-WA'
-const buttonWA = document.getElementById('roi-details-button-WA');
+const buttonWARoi = document.getElementById('roi-details-button-WA');
 
 // Select all elements on the page with class 'vissible-list-WA' or 'hidden-list-WA'
-const elementsWA = document.querySelectorAll('.vissible-list-WA, .hidden-list-WA');
+const elementsWARoi = document.querySelectorAll('.vissible-list-WA-Roi, .hidden-list-WA-Roi');
 
 // Initialize a state variable to track whether the elements are currently expanded or not
-let isExpandedWA = false;
+let isExpandedWARoi = false;
 
 // Add a click event listener to the 'details-button-WA' button
-buttonWA.addEventListener('click', () => {
-    // For each element in 'elementsWA', toggle its visibility class
-    elementsWA.forEach((element) => {
-        element.classList.toggle('vissible-list-WA');
-        element.classList.toggle('hidden-list-WA');
+buttonWARoi.addEventListener('click', () => {
+    // For each element in 'elementsWARoi', toggle its visibility class
+    elementsWARoi.forEach((element) => {
+        element.classList.toggle('vissible-list-WA-Roi');
+        element.classList.toggle('hidden-list-WA-Roi');
     });
 
     // Update the text of the button and the state variable based on whether the elements are expanded or not
-    if (isExpandedWA) {
-        buttonWA.textContent = 'More details';
-        isExpandedWA = false;
+    if (isExpandedWARoi) {
+        buttonWARoi.textContent = 'More details';
+        isExpandedWARoi = false;
     } else {
-        buttonWA.textContent = 'Less details';
-        isExpandedWA = true;
+        buttonWARoi.textContent = 'Less details';
+        isExpandedWARoi = true;
     }
 });
 
 // Get the button element with ID 'details-button-WOA'
-const buttonWOA = document.getElementById('roi-details-button-WOA');
+const buttonWOARoi = document.getElementById('roi-details-button-WOA');
 
-// Select all elements on the page with class 'vissible-list-WOA' or 'hidden-list-WOA'
-const elementsWOA = document.querySelectorAll('.vissible-list-WOA, .hidden-list-WOA');
+// Select all elements on the page with class 'vissible-list-WOA-Roi' or 'hidden-list-WOA-Roi'
+const elementsWOARoi = document.querySelectorAll('.vissible-list-WOA-Roi, .hidden-list-WOA-Roi');
 
 // Initialize a state variable to track whether the elements are currently expanded or not
-let isExpandedWOA = false; // Variable de estado
+let isExpandedWOARoi = false; // Variable de estado
 
 // Add a click event listener to the 'details-button-WOA' button
-buttonWOA.addEventListener('click', () => {
-    // For each element in 'elementsWOA', toggle its visibility class
-    elementsWOA.forEach((element) => {
-        element.classList.toggle('vissible-list-WOA');
-        element.classList.toggle('hidden-list-WOA');
+buttonWOARoi.addEventListener('click', () => {
+    // For each element in 'elementsWOARoi', toggle its visibility class
+    elementsWOARoi.forEach((element) => {
+        element.classList.toggle('vissible-list-WOA-Roi');
+        element.classList.toggle('hidden-list-WOA-Roi');
     });
 
     // Update the text of the button and the state variable based on whether the elements are expanded or not
-    if (isExpandedWOA) {
-        buttonWOA.textContent = 'More details';
-        isExpandedWOA = false;
+    if (isExpandedWOARoi) {
+        buttonWOARoi.textContent = 'More details';
+        isExpandedWOARoi = false;
     } else {
-        buttonWOA.textContent = 'Less details';
-        isExpandedWOA = true;
+        buttonWOARoi.textContent = 'Less details';
+        isExpandedWOARoi = true;
     }
 });

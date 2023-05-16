@@ -383,7 +383,7 @@ function roi_calculate_revenue_recovered_from_vacancy_loss_summary(val){
 
 function roi_calculate_noi_increase_summary(val){
     roifields[val].value = (roifields[33].value - roifields[16].value)*-1;
-    roifields[val].valueFormatted = roifields[val].value.toFixed(2);
+    roifields[val].valueFormatted = roifields[val].value.toFixed(2) + " %";
     return roifields[val].valueFormatted;
 }
 

@@ -1,4 +1,4 @@
-// Get the button element with ID 'details-button-WA'
+// Get the button element with ID 'noi-details-button-WA'
 const buttonWA = document.getElementById('noi-details-button-WA');
 
 // Select all elements on the page with class 'vissible-list-WA' or 'hidden-list-WA'
@@ -7,7 +7,7 @@ const elementsWA = document.querySelectorAll('.vissible-list-WA, .hidden-list-WA
 // Initialize a state variable to track whether the elements are currently expanded or not
 let isExpandedWA = false; // Variable de estado
 
-// Add a click event listener to the 'details-button-WA' button
+// Add a click event listener to the 'noi-details-button-WA' button
 buttonWA.addEventListener('click', () => {
     // For each element in 'elementsWA', toggle its visibility class
     elementsWA.forEach((element) => {
@@ -25,7 +25,7 @@ buttonWA.addEventListener('click', () => {
     }
 });
 
-// Get the button element with ID 'details-button-WOA'
+// Get the button element with ID 'noi-details-button-WOA'
 const buttonWOA = document.getElementById('noi-details-button-WOA');
 
 // Select all elements on the page with class 'vissible-list-WOA' or 'hidden-list-WOA'
@@ -34,7 +34,7 @@ const elementsWOA = document.querySelectorAll('.vissible-list-WOA, .hidden-list-
 // Initialize a state variable to track whether the elements are currently expanded or not
 let isExpandedWOA = false; // Variable de estado
 
-// Add a click event listener to the 'details-button-WOA' button
+// Add a click event listener to the 'noi-details-button-WOA' button
 buttonWOA.addEventListener('click', () => {
     // For each element in 'elementsWOA', toggle its visibility class
     elementsWOA.forEach((element) => {

@@ -116,7 +116,6 @@ function createSliders(){
 
 // Trigger all the calculates.
 function calculateAllNoi(){
-   
     for (let i=0;i<=noifields.length-1; i++){
         document.getElementById(noifields[i].fieldID).value = noifields[i].onEnter();
     }    

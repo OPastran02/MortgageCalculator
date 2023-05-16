@@ -434,6 +434,15 @@ input[type="range"]:active::-webkit-slider-thumb{
     display: none;
 }
 
+.vissible-list-WA-Roi, .vissible-list-WOA-Roi{
+    display: block;
+}
+
+.hidden-list-WA-Roi, .hidden-list-WOA-Roi{
+    display: none;
+}
+
+
 /* Buttons More Details End */
 
 
@@ -497,4 +506,23 @@ input[type="range"]:active::-webkit-slider-thumb{
     }
 }
 
+@media (max-width:400px) {
+    #roi-rangeValue1,#roi-rangeValue2,#roi-rangeValue3,#roi-rangeValue4,#roi-rangeValue5,#roi-rangeValue6,
+    #roi-rangeValue7,#roi-rangeValue8,#roi-rangeValue9,#roi-rangeValue10,#roi-rangeValue11{
+        width: 35%;
+    }
+    .container-range span{    
+        width: 35%;
+    }
+}
+
+@media (max-width:400px) {
+    #roi-rangeValue1,#roi-rangeValue2,#roi-rangeValue3,#roi-rangeValue4,#roi-rangeValue5,#roi-rangeValue6,
+    #roi-rangeValue7,#roi-rangeValue8,#roi-rangeValue9,#roi-rangeValue10,#roi-rangeValue11{
+        width: 40%;
+    }
+    .container-range span{    
+        width: 40%;
+    }
+}
 /* MediaQuerys End */
